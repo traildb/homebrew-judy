@@ -5,6 +5,7 @@ class Judy < Formula
   sha256 "d2704089f85fdb6f2cd7e77be21170ced4b4375c03ef1ad4cf1075bd414a63eb"
 
   def install
+    ENV['CFLAGS'] = "-O2 -D_FORTIFY_SOURCE=0"
     system "./configure", "--disable-debug", "--disable-dependency-tracking",
                           "--prefix=#{prefix}"
     ENV.deparallelize # Doesn't compile on parallel build
